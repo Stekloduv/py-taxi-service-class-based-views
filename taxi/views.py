@@ -48,6 +48,7 @@ class DriverDetailView(generic.DetailView):
     model = Driver
     template_name = "taxi/driver_detail.html"
     context_object_name = "driver_instance"
+    queryset = Driver.objects.prefetch_related('cars__manufacturer')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
